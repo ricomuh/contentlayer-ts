@@ -1,38 +1,111 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js with TypeScript, Tailwind CSS, Contentlayer, and MDX
+
+This is a template repository for creating a website with Next.js using TypeScript and Tailwind CSS for styling. It also includes Contentlayer for a CMS system and MDX for creating dynamic pages with content from the CMS.
 
 ## Getting Started
 
-First, run the development server:
+1. Clone this repository:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+   ```bash
+   git clone https://github.com/ricomuh/contentlayer-ts.git
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   cd contentlayer-ts
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   The website should now be running at [http://localhost:3000](http://localhost:3000).
+
+## Contentlayer
+
+Contentlayer is a simple and flexible content management system for Next.js. It allows you to define a schema for your content and use it to generate static pages using MDX.
+
+### Defining a Schema
+
+The schema is defined in `src/contentlayer/schema.ts`. Here's an example schema for a blog:
+
+```typescript
+import { defineDocumentType } from "contentlayer/schema";
+
+export const Post = defineDocumentType(() => ({
+  name: "Post",
+  filePathPattern: "posts/*.mdx",
+  fields: {
+    title: { type: "string" },
+    author: { type: "string" },
+    body: { type: "mdx" },
+    publishedAt: { type: "date" },
+  },
+}));
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The `filePathPattern` field is used to tell Contentlayer where to find the content files. In this example, it's set to `posts/*.mdx`, which means that Contentlayer will look for `.mdx` files in the `posts` directory.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Creating Content
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+To create content, create a new Markdown file in the `posts` directory. The file should have a `.mdx` extension and start with a YAML front matter section defining the document type and its fields:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```yaml
+---
+type: Post
+title: My First Post
+author: Jane Doe
+publishedAt: "2023-02-24"
+---
+# Welcome to my blog
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This is my first post.
+```
+
+## TypeScript Support
+
+Contentlayer has built-in TypeScript support. The `Post` type used in the example above is automatically generated from the schema definition.
+
+### Tailwind CSS
+
+This repository uses Tailwind CSS for styling. Tailwind is a utility-first CSS framework that allows you to rapidly build custom designs. If you're not familiar with Tailwind, you can learn more at [TailwindCSS.com](https://tailwindcss.com/).
+
+## Deploying
+
+To deploy your website, you can use any deployment platform that supports Next.js. Here are some popular options:
+
+- Vercel
+- Netlify
+- AWS Amplify
+
+You can also deploy to a custom server by building the app and running it as a Node.js process. Here's how to do it:
+
+Build the app:
+
+    ```bash
+    npm run build
+    ```
+
+Start the app:
+
+    ```bash
+    npm start
+    ```
+
+The website should now be running at http://localhost:3000.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about Next.js, check out the [Next.js documentation](https://nextjs.org/docs).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To learn more about Contentlayer, check out the [Contentlayer documentation](https://www.contentlayer.dev/docs/).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To learn more about Tailwind CSS, check out the [Tailwind CSS documentation](https://tailwindcss.com/docs).
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Contributions are welcome! If you find a bug or want to add a feature, please open an issue or submit a pull request.
