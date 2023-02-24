@@ -1,0 +1,50 @@
+{
+  "cacheItemsMap": {
+    "first-article.mdx": {
+      "document": {
+        "title": "This is my first R Markdown document",
+        "date": "2015-10-01T00:00:00.000Z",
+        "body": {
+          "raw": "\r\n## This is a markdown file\r\n\r\n```{r}\r\nsummary(cars)\r\n```\r\n\r\n## This is the end of the document\r\n\r\nThe code chunk above is the only code chunk in the document. It is not a named chunk, so it is given the default name of “unnamed-chunk-1”. The chunk is evaluated and the results are displayed in the document. The chunk is also cached, so the results are not re-evaluated when the document is rendered again.\r\n\r\nThe chunk options are specified in the chunk header. The chunk header is a line of R code that begins with three backticks (```) and ends with a curly brace (}). The chunk header is followed by the code to be evaluated. The chunk header is optional, but it is recommended that you always use it. The chunk header is used to specify chunk options, such as the language of the code, the results to display, and the cache behavior.\r\n\r\nThe chunk options are specified as name-value pairs. The name-value pairs are separated by commas. The name-value pairs are enclosed in square brackets. The name-value pairs are optional, but it is recommended that you always use them. The name-value pairs are used to specify chunk options, such as the language of the code, the results to display, and the cache behavior.\r\n",
+          "html": "<h2>This is a markdown file</h2>\n<pre><code class=\"language-{r}\">summary(cars)\n</code></pre>\n<h2>This is the end of the document</h2>\n<p>The code chunk above is the only code chunk in the document. It is not a named chunk, so it is given the default name of “unnamed-chunk-1”. The chunk is evaluated and the results are displayed in the document. The chunk is also cached, so the results are not re-evaluated when the document is rendered again.</p>\n<p>The chunk options are specified in the chunk header. The chunk header is a line of R code that begins with three backticks (```) and ends with a curly brace (}). The chunk header is followed by the code to be evaluated. The chunk header is optional, but it is recommended that you always use it. The chunk header is used to specify chunk options, such as the language of the code, the results to display, and the cache behavior.</p>\n<p>The chunk options are specified as name-value pairs. The name-value pairs are separated by commas. The name-value pairs are enclosed in square brackets. The name-value pairs are optional, but it is recommended that you always use them. The name-value pairs are used to specify chunk options, such as the language of the code, the results to display, and the cache behavior.</p>"
+        },
+        "_id": "first-article.mdx",
+        "_raw": {
+          "sourceFilePath": "first-article.mdx",
+          "sourceFileName": "first-article.mdx",
+          "sourceFileDir": ".",
+          "contentType": "mdx",
+          "flattenedPath": "first-article"
+        },
+        "type": "Post",
+        "slug": "first-article"
+      },
+      "documentHash": "1677176152055",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    },
+    "how-to-use-mdx.mdx": {
+      "document": {
+        "title": "How to use MDX with Next.js",
+        "date": "2020-03-02T00:00:00.000Z",
+        "body": {
+          "raw": "\r\n# How to use MDX with Next.js\r\n\r\nMDX is a great way to write React components in Markdown. It's a great way to write blog posts, documentation, and more. In this post, we'll go over how to use MDX with Next.js.\r\n\r\n## Getting Started\r\n\r\nFirst, we'll need to install the dependencies we need. We'll need `@mdx-js/loader` and `@mdx-js/react`:\r\n\r\n```bash\r\nnpm install @mdx-js/loader @mdx-js/react\r\n```\r\n\r\nNext, we'll need to add a new loader to our `next.config.js` file:\r\n\r\n```js\r\nmodule.exports = {\r\n  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {\r\n    config.module.rules.push({\r\n      test: /\\.mdx?$/,\r\n      use: [\r\n        defaultLoaders.babel,\r\n        {\r\n          loader: \"@mdx-js/loader\",\r\n          options: {\r\n            remarkPlugins: [],\r\n            rehypePlugins: [],\r\n          },\r\n        },\r\n      ],\r\n    });\r\n    return config;\r\n  },\r\n};\r\n```\r\n\r\nNow, we can create a new MDX file in our `pages` directory:\r\n\r\n```md\r\n# Hello, world!\r\n\r\nThis is a blog post written in MDX.\r\n```\r\n\r\nNow, we can import the MDX file into a page and render it:\r\n\r\n```js\r\nimport Post from \"../hello.mdx\";\r\n\r\nexport default () => <Post />;\r\n```\r\n\r\n## Styling MDX\r\n\r\nMDX is just a React component, so we can style it however we want. We can use any CSS-in-JS library we want, or we can use plain old CSS. Let's use plain old CSS for this example:\r\n\r\n```css\r\nh1 {\r\n  color: red;\r\n}\r\n```\r\n\r\nNow, we can import the CSS file into our MDX file:\r\n\r\n```md\r\nimport './hello.css'\r\n\r\n# Hello, world!\r\n\r\nThis is a blog post written in MDX.\r\n```\r\n",
+          "html": "<h1>How to use MDX with Next.js</h1>\n<p>MDX is a great way to write React components in Markdown. It's a great way to write blog posts, documentation, and more. In this post, we'll go over how to use MDX with Next.js.</p>\n<h2>Getting Started</h2>\n<p>First, we'll need to install the dependencies we need. We'll need <code>@mdx-js/loader</code> and <code>@mdx-js/react</code>:</p>\n<pre><code class=\"language-bash\">npm install @mdx-js/loader @mdx-js/react\n</code></pre>\n<p>Next, we'll need to add a new loader to our <code>next.config.js</code> file:</p>\n<pre><code class=\"language-js\">module.exports = {\r\n  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {\r\n    config.module.rules.push({\r\n      test: /\\.mdx?$/,\r\n      use: [\r\n        defaultLoaders.babel,\r\n        {\r\n          loader: \"@mdx-js/loader\",\r\n          options: {\r\n            remarkPlugins: [],\r\n            rehypePlugins: [],\r\n          },\r\n        },\r\n      ],\r\n    });\r\n    return config;\r\n  },\r\n};\n</code></pre>\n<p>Now, we can create a new MDX file in our <code>pages</code> directory:</p>\n<pre><code class=\"language-md\"># Hello, world!\r\n\r\nThis is a blog post written in MDX.\n</code></pre>\n<p>Now, we can import the MDX file into a page and render it:</p>\n<pre><code class=\"language-js\">import Post from \"../hello.mdx\";\r\n\r\nexport default () => &#x3C;Post />;\n</code></pre>\n<h2>Styling MDX</h2>\n<p>MDX is just a React component, so we can style it however we want. We can use any CSS-in-JS library we want, or we can use plain old CSS. Let's use plain old CSS for this example:</p>\n<pre><code class=\"language-css\">h1 {\r\n  color: red;\r\n}\n</code></pre>\n<p>Now, we can import the CSS file into our MDX file:</p>\n<pre><code class=\"language-md\">import './hello.css'\r\n\r\n# Hello, world!\r\n\r\nThis is a blog post written in MDX.\n</code></pre>"
+        },
+        "_id": "how-to-use-mdx.mdx",
+        "_raw": {
+          "sourceFilePath": "how-to-use-mdx.mdx",
+          "sourceFileName": "how-to-use-mdx.mdx",
+          "sourceFileDir": ".",
+          "contentType": "mdx",
+          "flattenedPath": "how-to-use-mdx"
+        },
+        "type": "Post",
+        "slug": "how-to-use-mdx"
+      },
+      "documentHash": "1677177028187",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    }
+  }
+}

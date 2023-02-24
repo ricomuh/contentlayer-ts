@@ -1,0 +1,75 @@
+---
+title: "How to use MDX with Next.js"
+date: "2020-03-02"
+---
+
+# How to use MDX with Next.js
+
+MDX is a great way to write React components in Markdown. It's a great way to write blog posts, documentation, and more. In this post, we'll go over how to use MDX with Next.js.
+
+## Getting Started
+
+First, we'll need to install the dependencies we need. We'll need `@mdx-js/loader` and `@mdx-js/react`:
+
+```bash
+npm install @mdx-js/loader @mdx-js/react
+```
+
+Next, we'll need to add a new loader to our `next.config.js` file:
+
+```js
+module.exports = {
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    config.module.rules.push({
+      test: /\.mdx?$/,
+      use: [
+        defaultLoaders.babel,
+        {
+          loader: "@mdx-js/loader",
+          options: {
+            remarkPlugins: [],
+            rehypePlugins: [],
+          },
+        },
+      ],
+    });
+    return config;
+  },
+};
+```
+
+Now, we can create a new MDX file in our `pages` directory:
+
+```md
+# Hello, world!
+
+This is a blog post written in MDX.
+```
+
+Now, we can import the MDX file into a page and render it:
+
+```js
+import Post from "../hello.mdx";
+
+export default () => <Post />;
+```
+
+## Styling MDX
+
+MDX is just a React component, so we can style it however we want. We can use any CSS-in-JS library we want, or we can use plain old CSS. Let's use plain old CSS for this example:
+
+```css
+h1 {
+  color: red;
+}
+```
+
+Now, we can import the CSS file into our MDX file:
+
+```md
+import './hello.css'
+
+# Hello, world!
+
+This is a blog post written in MDX.
+```
